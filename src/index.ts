@@ -94,6 +94,10 @@ export class BrowserStorage {
                 const value = this.storage.getItem(key);
                 if (value != null) {
                     result[x] = this.parse(value);
+                } else {
+                    if (typeof keys[x] !== "undefined") {
+                        result[x] = keys[x];
+                    }
                 }
             });
         }
