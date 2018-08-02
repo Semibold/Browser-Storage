@@ -1,10 +1,6 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "std@utils": ["src/scripts/utils"]
-    },
     "sourceMap": true,
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
