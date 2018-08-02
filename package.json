@@ -1,8 +1,8 @@
 {
   "name": "@semibold/browser-storage",
   "version": "1.0.0",
-  "description": "",
-  "main": "",
+  "description": "Use the Browser-Storage API to store, retrieve user data from localStorage/sessionStorage",
+  "main": "dist/release/browser-storage.js",
   "types": "src/index.ts",
   "scripts": {
     "build": "npm run tslint && webpack --display=errors-only --mode=production",
@@ -15,7 +15,15 @@
     "type": "git",
     "url": "git+https://github.com/Semibold/Browser-Storage.git"
   },
-  "keywords": [],
+  "keywords": [
+    "javascript",
+    "cross-browser",
+    "storage",
+    "localstorage",
+    "sessionstorage",
+    "browser-storage",
+    "chrome.storage APIs alike"
+  ],
   "author": "Aqours",
   "license": "MIT",
   "bugs": {
