@@ -42,7 +42,7 @@ export class BrowserStorage {
     /**
      * @see https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API
      */
-    isAvailable(): boolean {
+    available(): boolean {
         try {
             const x = "__storage_test__";
             this.storage.setItem(x, x);
