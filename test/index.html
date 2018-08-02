@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Browser Storage Test</title>
+    <script src="../dist/release/browser-storage.js"></script>
+</head>
+<body>
+<script>
+    console.log(BrowserStorage.metadata);
+
+    var local = new BrowserStorage('localStorage');
+    var media = new BrowserStorage('localStorage', {prefix: 'media.'});
+    var image = new BrowserStorage('localStorage', {prefix: 'image_'});
+    var localItems, mediaItems, imageItems;
+
+    console.log('storage available:', local.isAvailable());
+
+    function randomString(n) {
+        const buffer = [];
+        const charPool = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+        while (n--) {
+            buffer.push(charPool[Math.floor(Math.random() * charPool.length)]);
+        }
+        return buffer.join("");
+    }
+
+    function generateKeys(n) {
+        var result = {};
+        for (var i = 0; i < n; i++) {
+            result[randomString(6)] = randomString(8);
+        }
+        return result;
+    }
+
+    localItems = generateKeys(10);
+    mediaItems = generateKeys(11);
+    imageItems = generateKeys(12);
+
+    function startTestStorage() {
+        local.set(localItems);
+        media.set(mediaItems);
+        image.set(imageItems);
+        console.log('local.get(string):', local.get(Object.keys(localItems)[0]));
+        console.log('media.get(null):', media.get(null));
+        console.log('image.get(string[]):', image.get(Object.keys(imageItems).slice(-3)));
+        console.log('local.getBytesInUse(null):', local.getBytesInUse(null));
+        console.log('media.getBytesInUse(string):', media.getBytesInUse(Object.keys(mediaItems)[0]));
+        console.log('image.getBytesInUse(string[]):', image.getBytesInUse(Object.keys(imageItems).slice(-3)));
+    }
+
+    function removeTestStorage() {
+        media.remove(Object.keys(mediaItems)[0]);
+        image.remove(Object.keys(imageItems).slice(-3));
+        console.log('media.get(null) after media.remove(string):', media.get(null));
+        console.log('image.get(null) after image.remove(string[]):', image.get(null));
+    }
+
+    function clearTestStorage() {
+        image.clear();
+        console.log('image.get(null) after image.clear():', image.get(null));
+        console.log('media.get(null):', media.get(null));
+        console.log('local.getBytesInUse(null) before local.clear():', local.getBytesInUse(null));
+        local.clear();
+        console.log('media.get(null) after local.clear():', media.get(null));
+        console.log('local.get(null) after local.clear():', local.get(null));
+        console.log('local.getBytesInUse(null) after local.clear():', local.getBytesInUse(null));
+    }
+</script>
+</body>
+</html>
