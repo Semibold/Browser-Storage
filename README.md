@@ -124,6 +124,11 @@ const abc2 = bs2.get(['abc'])['abc'];
 
 console.log(abc1 === abc2);     // true
 console.log(abc1 === 12358);    // true
+
+const value = "should be return this statement";
+const __inexistent_value__ = bs1.get({__inexistent_key__: value}).__inexistent_key__;
+
+console.log(value === __inexistent_value__);    // true
 ```
 
 
