@@ -1,6 +1,6 @@
 {
   "name": "@semibold/browser-storage",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Use the Browser-Storage API to store, retrieve user data from localStorage/sessionStorage",
   "main": "dist/release/browser-storage.js",
   "types": "src/index.ts",
