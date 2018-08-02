@@ -108,7 +108,7 @@ export class BrowserStorage {
         if (keys === null) {
             for (let i = 0; i < this.storage.length; i++) {
                 const key = this.storage.key(i);
-                if (key != null) {
+                if (key != null && key.slice(0, this.prefix.length) === this.prefix) {
                     const value = this.storage.getItem(key);
                     if (value != null) {
                         caches.push(key, value);
