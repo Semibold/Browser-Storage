@@ -1,0 +1,46 @@
+{
+  "name": "@semibold/browser-storage",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "types": "src/index.ts",
+  "scripts": {
+    "build": "npm run tslint && webpack --display=errors-only --mode=production",
+    "start": "webpack -w --mode=development",
+    "tslint": "tslint -p ./ ./**/*.ts ./**/*.tsx",
+    "pretty": "prettier --write ./{webpack.config.js,{src,test,types}/**/*.{js,jsx,jsm,ts,tsx,css,less,json,md}}",
+    "version": "npm run build && git add -A dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Semibold/Browser-Storage.git"
+  },
+  "keywords": [],
+  "author": "Aqours",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Semibold/Browser-Storage/issues"
+  },
+  "homepage": "https://github.com/Semibold/Browser-Storage#readme",
+  "engines": {
+    "node": ">=8.9.0"
+  },
+  "prettier": {
+    "printWidth": 120
+  },
+  "devDependencies": {
+    "@types/node": "10.5.3",
+    "event-hooks-webpack-plugin": "2.0.0",
+    "git-rev-sync": "1.12.0",
+    "prettier": "1.14.0",
+    "rimraf": "2.6.2",
+    "ts-loader": "4.4.2",
+    "ts-node": "7.0.0",
+    "tslint": "5.11.0",
+    "typescript": "3.0.1",
+    "uglifyjs-webpack-plugin": "1.2.7",
+    "webpack": "4.16.3",
+    "webpack-bundle-analyzer": "2.13.1",
+    "webpack-cli": "3.1.0"
+  }
+}
