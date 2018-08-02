@@ -7,7 +7,7 @@
 </head>
 <body>
 <script>
-    console.log(BrowserStorage.metadata);
+    console.log('BrowserStorage metadata:', BrowserStorage.metadata);
 
     var local = new BrowserStorage('localStorage');
     var media = new BrowserStorage('localStorage', {prefix: 'media.'});
@@ -28,7 +28,13 @@
     function generateKeys(n) {
         var result = {};
         for (var i = 0; i < n; i++) {
-            result[randomString(6)] = randomString(8);
+            result[randomString(6)] = {
+                empty: null,
+                rndstr: randomString(8),
+                color: [255, 255, 255, 1],
+                enabled: true,
+                ten: 10,
+            };
         }
         return result;
     }
@@ -38,15 +44,22 @@
     imageItems = generateKeys(12);
 
     function startTestStorage() {
+        console.time('init storage');
         local.set(localItems);
         media.set(mediaItems);
         image.set(imageItems);
+        console.timeEnd('init storage');
+
         console.log('local.get(string):', local.get(Object.keys(localItems)[0]));
-        console.log('media.get(null):', media.get(null));
-        console.log('image.get(string[]):', image.get(Object.keys(imageItems).slice(-3)));
         console.log('local.getBytesInUse(null):', local.getBytesInUse(null));
+        console.log('local.get({__inexistent_key__: "should be return this statement"})', local.get({__inexistent_key__: "should be return this statement"}));
+
+        console.log('media.get(null):', media.get(null));
         console.log('media.getBytesInUse(string):', media.getBytesInUse(Object.keys(mediaItems)[0]));
+
+        console.log('image.get(string[]):', image.get(Object.keys(imageItems).slice(-3)));
         console.log('image.getBytesInUse(string[]):', image.getBytesInUse(Object.keys(imageItems).slice(-3)));
+
     }
 
     function removeTestStorage() {
@@ -57,11 +70,18 @@
     }
 
     function clearTestStorage() {
+        console.time('clear image storage');
         image.clear();
+        console.timeEnd('clear image storage');
+
         console.log('image.get(null) after image.clear():', image.get(null));
         console.log('media.get(null):', media.get(null));
         console.log('local.getBytesInUse(null) before local.clear():', local.getBytesInUse(null));
+
+        console.time('clear local storage');
         local.clear();
+        console.timeEnd('clear local storage');
+
         console.log('media.get(null) after local.clear():', media.get(null));
         console.log('local.get(null) after local.clear():', local.get(null));
         console.log('local.getBytesInUse(null) after local.clear():', local.getBytesInUse(null));
