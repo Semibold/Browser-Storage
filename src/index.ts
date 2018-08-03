@@ -95,7 +95,7 @@ export class BrowserStorage {
                 if (value != null) {
                     result[x] = this.parse(value);
                 } else {
-                    if (typeof keys[x] !== "undefined") {
+                    if (keys.hasOwnProperty(x)) {
                         result[x] = keys[x];
                     }
                 }

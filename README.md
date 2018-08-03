@@ -92,7 +92,7 @@ bs.getBytesInUse(keys);
  * @desc An object which gives each key/value pair to update storage with. Any other
  *       key/value pairs in storage will not be affected.
  * 
- * @param {object} items
+ * @param {Object} items
  */
 bs.set(items);
 
