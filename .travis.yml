@@ -1,13 +1,13 @@
 sudo: required
 language: node_js
 node_js:
-- lts/*
+  - lts/*
 
 before_script:
-- npm i
+  - npm i
 
 script:
-- npm run tslint
+  - npm run tslint
 
 deploy:
   provider: npm
