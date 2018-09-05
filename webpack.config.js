@@ -26,12 +26,10 @@ module.exports = function(env = {}, argv = {}) {
         return defArgument;
     }
 
-    Object.assign(env, {
-        lastCompiled: new Date().toISOString(),
-        mode: getArgument("mode", "production"),
-        devtool: getArgument("devtool", false),
-        outputPath: env.mode === "production" ? releasePath : webpackPath
-    });
+    env.lastCompiled = new Date().toISOString();
+    env.mode = getArgument("mode", "production");
+    env.devtool = getArgument("devtool", false);
+    env.outputPath = env.mode === "production" ? releasePath : webpackPath;
 
     console.log(`webpack mode: ${env.mode}, git-commit hash: ${git.short()}, current branch: ${git.branch()}`);
 
