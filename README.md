@@ -1,5 +1,7 @@
 # Browser-Storage
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Semibold/Browser-Storage.svg)](https://greenkeeper.io/)
+
 > Use the Browser-Storage API to store, retrieve user data from localStorage/sessionStorage.
 
 
