@@ -1,5 +1,7 @@
 # Browser-Storage
 
+> [Changelog](changelog.md)
+
 > Use the Browser-Storage API to store, retrieve user data from localStorage/sessionStorage.
 
 ## Install
