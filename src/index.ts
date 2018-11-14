@@ -23,7 +23,7 @@ export class BrowserStorage {
 
     constructor(
         private readonly areaName: "localStorage" | "sessionStorage",
-        private readonly options: Partial<BrowserStorageDefaultOptions> = {}
+        private readonly options: Partial<BrowserStorageDefaultOptions> = {},
     ) {
         this.storage = self[areaName];
         this.prefix = this.options.prefix || "";
