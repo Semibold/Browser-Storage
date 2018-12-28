@@ -49,8 +49,8 @@ const bs = new BrowserStorage(areaName, options);
  * @typedef {Object} Metadata
  * @property {string} name
  * @property {string} version
- * @property {string} envMode
- * @property {string} gitHash
+ * @property {string} revision
+ * @property {boolean} production
  * @property {string} lastCompiled
  * @return {Metadata}
  */
@@ -119,19 +119,20 @@ bs.clear();
 ```js
 const bs1 = new BrowserStorage("localStorage");
 const bs2 = new BrowserStorage("localStorage", { prefix: "test." });
+if (bs1.available()) {
+    bs2.set({ abc: 12358 });
 
-bs2.set({ abc: 12358 });
+    const abc1 = bs1.get("test.abc")["test.abc"];
+    const abc2 = bs2.get(["abc"])["abc"];
 
-const abc1 = bs1.get("test.abc")["test.abc"];
-const abc2 = bs2.get(["abc"])["abc"];
+    console.log(abc1 === abc2); // true
+    console.log(abc1 === 12358); // true
 
-console.log(abc1 === abc2); // true
-console.log(abc1 === 12358); // true
+    const value = "should be return this statement";
+    const __inexistent_value__ = bs1.get({ __inexistent_key__: value }).__inexistent_key__;
 
-const value = "should be return this statement";
-const __inexistent_value__ = bs1.get({ __inexistent_key__: value }).__inexistent_key__;
-
-console.log(value === __inexistent_value__); // true
+    console.log(value === __inexistent_value__); // true
+}
 ```
 
 ## Reference
